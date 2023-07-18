@@ -1,0 +1,195 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>css3可调节的风扇-YzmCMS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .all {
+            width: 360px;
+            height: 625px;
+            margin-top: 100px;
+            margin-left: 500px;
+        }
+
+        .main {
+            width: 350px;
+            height: 350px;
+            border: 5px solid green;
+            font-size: 0;
+            border-radius: 350px;
+            position: relative;
+            background: radial-gradient(#FFF 5%, green 95%);
+            z-index: 1;
+        }
+
+        .main div {
+            width: 30px;
+            height: 150px;
+            border: 1px solid green;
+            background-color: green;
+            display: inline-block;
+            box-sizing: border-box;
+            border-radius: 50% 50%;
+        }
+
+        .main div:nth-child(1) {
+            margin-left: 161px;
+            margin-top: 14px;
+        }
+
+        .main div:nth-child(2) {
+            transform: rotate(120deg);
+            transform-origin: 0 100%;
+        }
+
+        .main div:nth-child(3) {
+            transform: rotate(240deg);
+            transform-origin: -50% 117%;
+        }
+
+        .main h1 {
+            width: 80px;
+            height: 80px;
+            background-color: green;
+            position: absolute;
+            border-radius: 80px;
+            top: 135px;
+            left: 135px;
+        }
+
+        .animate-rotate360-0 {}
+
+        .animate-rotate360-1 {
+            animation: rotate360 .4s linear infinite both;
+        }
+
+        .animate-rotate360-2 {
+            animation: rotate360 .6s linear infinite both;
+        }
+
+        .animate-rotate360-3 {
+            animation: rotate360 1s linear infinite both;
+        }
+
+        @keyframes rotate360 {
+            0% {}
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .box {
+            width: 60px;
+            height: 190px;
+            border: 5px solid green;
+            margin-left: 145px;
+            position: relative;
+            top: -10px;
+            background: radial-gradient(#FFF 5%, green 120%);
+        }
+
+        .box .btn:nth-child(1) {
+            margin-top: 30px;
+        }
+
+        .box .btn {
+            width: 20px;
+            height: 20px;
+            margin-left: 20px;
+            margin-top: 10px;
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .box .btn input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .box .btn input[type="radio"]:checked+span {
+            background-color: red;
+        }
+
+        .box .btn span {
+            display: block;
+            width: 20px;
+            height: 20px;
+            background-color: green;
+            color: #FFF;
+            text-align: center;
+            line-height: 20px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+        .footer {
+            width: 300px;
+            height: 60px;
+            border: 5px solid green;
+            margin-left: 25px;
+            border-radius: 50% 50%;
+            position: relative;
+            top: -20px;
+            background: radial-gradient(#FFF 5%, green 75%);
+            z-index: 1;
+            box-shadow: 3px 4px 10px 3px gray;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="all">
+        <div class="main">
+            <div></div>
+            <div></div>
+            <div></div>
+            <h1></h1>
+        </div>
+        <div class="box">
+            <div class="btn">
+                <input type="radio" name="radio_1" />
+                <span>1</span>
+            </div>
+            <div class="btn">
+                <input type="radio" name="radio_1" />
+                <span>2</span>
+            </div>
+            <div class="btn">
+                <input type="radio" name="radio_1" />
+                <span>3</span>
+            </div>
+            <div class="btn">
+                <input type="radio" name="radio_1" checked />
+                <span>关</span>
+            </div>
+        </div>
+        <div class="footer">
+
+        </div>
+    </div>
+    <script>
+        window.onload = function () {
+            var input = document.getElementsByTagName('input'),
+                main = document.getElementsByClassName('main')[0];
+            for (var i = 0; i < input.length; i++) {
+                input[i].addEventListener('click', function () {
+                    var num = parseInt(this.parentNode.getElementsByTagName('span')[0].innerHTML);
+                    main.className = 'main animate-rotate360-' + num;
+                }, false)
+            }
+        }
+    </script>
+</body>
+
+</html>
